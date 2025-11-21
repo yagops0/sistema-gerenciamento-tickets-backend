@@ -32,6 +32,12 @@ public class User implements UserDetails {
     @Column(name = "role", nullable = false)
     private UserRole role;
 
+    public User(String matricula, String senha, UserRole role){
+        this.matricula = matricula;
+        this.senha = senha;
+        this.role = role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(this.role.getRole()));

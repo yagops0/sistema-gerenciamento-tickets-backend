@@ -12,16 +12,24 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Solucoes {
+public class Solucao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "titulo", nullable = false)
     private String titulo;
-    @Column(name = "solucao", nullable = false)
-    private String solucao;
+
     @Column(name = "descricao", nullable = false)
     private String descricao;
+
+    @Column(name = "topico", nullable = false)
+    private TopicoSolucoes topico;
+
+    public Solucao(String titulo, String descricao, TopicoSolucoes topico){
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.topico = topico;
+    }
 
 }

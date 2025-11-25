@@ -1,8 +1,10 @@
 package com.yago.sistemaGerenciamentoTickets.controllers;
 
 import com.yago.sistemaGerenciamentoTickets.entities.AuthenticationDTO;
+import com.yago.sistemaGerenciamentoTickets.entities.LoginResponseDTO;
 import com.yago.sistemaGerenciamentoTickets.entities.RegisterDTO;
 import com.yago.sistemaGerenciamentoTickets.entities.User;
+import com.yago.sistemaGerenciamentoTickets.infra.security.TokenService;
 import com.yago.sistemaGerenciamentoTickets.repositories.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +27,18 @@ public class AuthenticationController {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
 
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.matricula(), data.senha());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")

@@ -1,10 +1,7 @@
 package com.yago.sistemaGerenciamentoTickets.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,19 +14,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
+@EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(name = "matricula", nullable = false)
     private String matricula;
-    @Column(name = "senha", nullable = false)
     private String senha;
-    @Column(name = "role", nullable = false)
     private UserRole role;
 
     public User(String matricula, String senha, UserRole role){

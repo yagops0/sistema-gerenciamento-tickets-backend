@@ -1,9 +1,8 @@
 package com.yago.sistemaGerenciamentoTickets.entities;
 
 public enum UserRole {
-    ADMIN("ADMIN"),
-    ANALISTA("ANALISTA"),
-    GERENTE("GERENTE");
+    ANALISTA("ROLE_ANALISTA"),
+    GERENTE("ROLE_GERENTE");
 
     private String role;
 
@@ -12,6 +11,7 @@ public enum UserRole {
     }
 
     public String getRole(){
-        return role;
+
+        return this.role;
     }
 }

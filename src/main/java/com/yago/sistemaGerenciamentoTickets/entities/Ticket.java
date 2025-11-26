@@ -18,9 +18,12 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "descricao", nullable = false)
     private String descricao;
     @Column(name = "status", nullable = false)
-    private String status;
+    private boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User users;
 }

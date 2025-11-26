@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,16 +15,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@EqualsAndHashCode(of = "id")
+//@EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "matricula", unique = true, nullable = false)
     private String matricula;
+    @Column(name = "senha", nullable = false)
     private String senha;
+    @Column(name = "role", nullable = false)
     private UserRole role;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Ticket> tickets = new ArrayList<>();
 
     public User(String matricula, String senha, UserRole role){
         this.matricula = matricula;

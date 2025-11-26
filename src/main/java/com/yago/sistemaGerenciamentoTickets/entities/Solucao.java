@@ -16,13 +16,10 @@ public class Solucao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "titulo", nullable = false)
     private String titulo;
-
     @Column(name = "descricao", nullable = false)
     private String descricao;
-
     @Column(name = "topico", nullable = false)
     private TopicoSolucoes topico;
 

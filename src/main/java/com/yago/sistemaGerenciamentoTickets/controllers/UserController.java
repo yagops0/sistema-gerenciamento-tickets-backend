@@ -3,6 +3,7 @@ package com.yago.sistemaGerenciamentoTickets.controllers;
 import com.yago.sistemaGerenciamentoTickets.entities.User;
 import com.yago.sistemaGerenciamentoTickets.entities.UserResponseDTO;
 import com.yago.sistemaGerenciamentoTickets.repositories.UserRepository;
+import com.yago.sistemaGerenciamentoTickets.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository repository;
+    private UserService userService;
 
     @GetMapping("analista")
     public String testeToken(){
@@ -28,9 +29,16 @@ public class UserController {
         return "FUNCIONOU GERENTE";
     }
 
+    @GetMapping("gerente/dashboard/analistas")
+    public ResponseEntity getAnalistas(){
+        List<UserResponseDTO> analistas = userService.retornarAnalistas();
+
+        return ResponseEntity.ok(analistas);
+    }
+
     @GetMapping("public/users")
     public ResponseEntity getUsers(){
-        List<UserResponseDTO> usuarios = this.repository.findAll().stream().map(UserResponseDTO::new).toList();
+        List<UserResponseDTO> usuarios = userService.retornarTodos();
 
         return ResponseEntity.ok(usuarios);
     }

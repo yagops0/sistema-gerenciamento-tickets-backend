@@ -7,6 +7,12 @@
 
 # O QUE TENHO DE FAZER ?
 
-- [ ] ENDPOINT GET para todos os ANALISTAS na interface de GERENTE
-- [ ] ENDPOINT GET para todos os TICKETS na interface de GERENTE
+- [X] ENDPOINT GET para todos os ANALISTAS na interface de GERENTE
+- [X] ENDPOINT GET para todos os TICKETS na interface de GERENTE
 - [ ] ENDPOINT GET para todos os TICKETS que pertencem a um ANALISTA na interface de ANALISTA
+
+EU QUERO PEGAR TODOS OS TICKETS QUE TENHO O user_id IGUAL AO QUE IREI PASSAR,
+COMO FAZER ISSO?
+
+PRECISO CHECAR NA CLASSE TICKET O user_id, E COMPARAR SE IGUAL AO QUE ESTOU PASSANDO COMO PARÂMETRO
+COM FAZER ISSO?

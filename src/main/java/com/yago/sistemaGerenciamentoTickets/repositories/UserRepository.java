@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    UserDetails findByMatricula(String matricula);
+    User findByMatricula(String matricula);
     List<User> findByRole(UserRole userRole);
 }

@@ -29,13 +29,13 @@ public class TicketService {
         return this.ticketRepository.findAll().stream().map(TicketResponseDTO::new).toList();
     }
 
-//    public List<TicketResponseDTO> getTicketsByResponsavel(String matriculaUser){
-//
-//        User analista = this.userRepository.findByMatricula(matriculaUser);
-//
-//        return this.ticketRepository.findByUsers(analista).stream().map(TicketResponseDTO::new).toList();
-//
-//    }
+    public List<TicketResponseDTO> getTicketsByResponsavel(String matriculaUser){
+
+        User analista = this.userRepository.findByMatricula(matriculaUser);
+
+        return this.ticketRepository.findByUsers(analista).stream().map(TicketResponseDTO::new).toList();
+
+    }
 
 
 }

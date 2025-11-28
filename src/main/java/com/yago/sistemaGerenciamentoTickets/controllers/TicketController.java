@@ -27,13 +27,13 @@ public class TicketController {
         return ResponseEntity.ok(tickets);
     }
 
-//    @GetMapping("analista/tickets")
-//    public ResponseEntity getTicketsAnalista(Principal principal){
-//
-//        String matriculaLogada = principal.getName();
-//
-//        List<TicketResponseDTO> tickets = ticketService.getTicketsByResponsavel(matriculaLogada);
-//
-//        return ResponseEntity.ok(tickets);
-//    }
+    @GetMapping("analista/tickets")
+    public ResponseEntity getTicketsAnalista(Principal principal){
+
+        String matriculaLogada = principal.getName();
+
+        List<TicketResponseDTO> tickets = ticketService.getTicketsByResponsavel(matriculaLogada);
+
+        return ResponseEntity.ok(tickets);
+    }
 }

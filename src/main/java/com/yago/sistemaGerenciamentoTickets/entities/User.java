@@ -1,5 +1,6 @@
 package com.yago.sistemaGerenciamentoTickets.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +31,7 @@ public class User implements UserDetails {
     private UserRole role;
 
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Ticket> tickets = new ArrayList<>();
 
     public User(String matricula, String senha, UserRole role){

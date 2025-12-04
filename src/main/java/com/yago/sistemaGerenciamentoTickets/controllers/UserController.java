@@ -19,16 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("analista")
-    public String testeToken(){
-        return "FUNCIONOU ANALISTA";
-    }
-
-    @GetMapping("gerente")
-    public String testeGerente(){
-        return "FUNCIONOU GERENTE";
-    }
-
     @GetMapping("gerente/dashboard/analistas")
     public ResponseEntity getAnalistas(){
         List<UserResponseDTO> analistas = userService.retornarAnalistas();

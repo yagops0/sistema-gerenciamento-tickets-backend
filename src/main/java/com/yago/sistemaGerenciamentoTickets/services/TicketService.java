@@ -1,9 +1,6 @@
 package com.yago.sistemaGerenciamentoTickets.services;
 
-import com.yago.sistemaGerenciamentoTickets.entities.Ticket;
-import com.yago.sistemaGerenciamentoTickets.entities.TicketResponseDTO;
-import com.yago.sistemaGerenciamentoTickets.entities.User;
-import com.yago.sistemaGerenciamentoTickets.entities.UserResponseDTO;
+import com.yago.sistemaGerenciamentoTickets.entities.*;
 import com.yago.sistemaGerenciamentoTickets.repositories.TicketRepository;
 import com.yago.sistemaGerenciamentoTickets.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +26,11 @@ public class TicketService {
         return this.ticketRepository.findAll().stream().map(TicketResponseDTO::new).toList();
     }
 
-    public List<TicketResponseDTO> getTicketsByResponsavel(String matriculaUser){
+    public List<TicketAnalistaResponseDTO> getTicketsByResponsavel(String matriculaUser){
 
         User analista = this.userRepository.findByMatricula(matriculaUser);
 
-        return this.ticketRepository.findByUsers(analista).stream().map(TicketResponseDTO::new).toList();
+        return this.ticketRepository.findByUsers(analista).stream().map(TicketAnalistaResponseDTO::new).toList();
 
     }
 

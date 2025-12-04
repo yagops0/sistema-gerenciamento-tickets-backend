@@ -26,6 +26,7 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("sistemaGerenciamentoTickets")
                     .withSubject(user.getMatricula())
+                    .withClaim("role", user.getRole().getRole())
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);// faz a assinatura e geração final
 

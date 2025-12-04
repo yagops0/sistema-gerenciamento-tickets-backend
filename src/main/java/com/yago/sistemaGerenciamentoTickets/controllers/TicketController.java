@@ -1,6 +1,7 @@
 package com.yago.sistemaGerenciamentoTickets.controllers;
 
 
+import com.yago.sistemaGerenciamentoTickets.entities.TicketAnalistaResponseDTO;
 import com.yago.sistemaGerenciamentoTickets.entities.TicketResponseDTO;
 import com.yago.sistemaGerenciamentoTickets.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class TicketController {
 
         String matriculaLogada = principal.getName();
 
-        List<TicketResponseDTO> tickets = ticketService.getTicketsByResponsavel(matriculaLogada);
+        List<TicketAnalistaResponseDTO> tickets = ticketService.getTicketsByResponsavel(matriculaLogada);
 
         return ResponseEntity.ok(tickets);
     }

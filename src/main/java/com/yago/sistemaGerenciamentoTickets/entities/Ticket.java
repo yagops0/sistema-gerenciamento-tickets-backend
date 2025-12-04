@@ -21,7 +21,7 @@ public class Ticket {
     @Column(name = "descricao", nullable = false)
     private String descricao;
     @Column(name = "status", nullable = false)
-    private boolean status;
+    private StatusTicket status;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

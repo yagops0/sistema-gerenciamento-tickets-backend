@@ -49,7 +49,7 @@ public class AuthenticationController {
         User newUser = new User(data.matricula(), encryptedPassword, data.role());
 
         this.repository.save(newUser);
-
+        System.out.println(a);
         return ResponseEntity.ok().build();
     }
 }
